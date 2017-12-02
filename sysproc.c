@@ -106,3 +106,22 @@ sys_chpr (void)
     return -1;
   return chpr(pid,pr);
 }
+
+int
+sys_procClock(void)
+{
+	int ticks,pid,priority;
+       if(argint(0, &ticks) < 0)
+         return -1;
+	   if(argint(1, &pid) < 0)
+         return -1;
+	   if(argint(2, &priority) < 0)
+         return -1;
+	myproc()->ticks = ticks;
+	myproc()->clockPid = pid;
+	myproc()->clockPriority = priority;
+	myproc()->handler = (int (*)(int,int))chpr(pid,priority);
+	
+	return 0;
+}
+
