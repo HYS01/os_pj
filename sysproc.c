@@ -108,20 +108,13 @@ sys_chpr (void)
 }
 
 int
-sys_procClock(void)
+sys_chdl(void)
 {
-	int ticks,pid,priority;
-       if(argint(0, &ticks) < 0)
+	int deadline,pid;
+       if(argint(0, &pid) < 0)
          return -1;
-	   if(argint(1, &pid) < 0)
+	   if(argint(1, &deadline) < 0)
          return -1;
-	   if(argint(2, &priority) < 0)
-         return -1;
-	myproc()->ticks = ticks;
-	myproc()->clockPid = pid;
-	myproc()->clockPriority = priority;
-	myproc()->handler = (int (*)(int,int))chpr(pid,priority);
-	
-	return 0;
+	return chdl(pid,deadline);
 }
 

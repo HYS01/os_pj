@@ -3,11 +3,15 @@
 #include "user.h"
 #include "fcntl.h"
 
+
 int 
 main(int argc, char *argv[])
 {
   int k, n, id;
   double x = 0, z ,d;
+
+  int *memory=0;
+  memory=memory;
   if(argc < 2)
     n = 1;
   else 
@@ -19,6 +23,15 @@ main(int argc, char *argv[])
     d = 1.0;
   else
     d = atoi (argv[2]);
+  
+  int m;
+  if (argc < 4 )
+    m = 10;
+  else
+   m = atoi (argv[3]);
+   
+   memory=malloc(m);
+
 
   x = 0;
   id = 0;

@@ -159,7 +159,6 @@ mkfs: mkfs.c fs.h
 .PRECIOUS: %.o
 
 UPROGS=\
-	_procClocktest\
 	_cat\
 	_echo\
 	_forktest\
@@ -178,6 +177,7 @@ UPROGS=\
         _foo\
         _chpr\
 	_zombie\
+	_chdl\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)
